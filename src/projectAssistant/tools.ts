@@ -73,7 +73,8 @@ const editFile: FunctionDefinition = {
     'Edit file content. Note, you are replacing whole lines. ' +
     'Be as much precise as possible with startRow and endRow. ' +
     'If you want to `add` the `content`, it will be placed after `startRow` index. ' +
-    'If you are making few changes in one file – keep original row numbers.',
+    'If you are making few changes in one file – keep original row numbers. ' +
+    'Keep indentation and line breaks as they are in the original file.',
   parameters: {
     type: 'object',
     properties: {
