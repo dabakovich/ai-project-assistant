@@ -91,6 +91,7 @@ export class ProjectAssistant {
 
   async handleFunctionCall(toolCall: ChatCompletionMessageToolCall) {
     let response: string;
+    let execResponse: string;
     const functionName = toolCall.function.name;
     const argumentsString = toolCall.function.arguments;
     let args;
@@ -141,8 +142,8 @@ export class ProjectAssistant {
           break;
         case FunctionName.exec:
           args = this.getArgumentsObject<FunctionName.exec>(argumentsString);
-          await this.fileSystemController.exec(args.command);
-          response = `Executed command: ${args.command}`;
+          execResponse = await this.fileSystemController.exec(args.command);
+          response = `Executed command: ${args.command}\n${execResponse}`;
           break;
         case FunctionName.getGitDiff:
           response = await this.gitController.getGitDiff();

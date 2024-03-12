@@ -148,7 +148,7 @@ export class FileSystem {
   public async exec(command: string) {
     const { exec } = child_process;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       exec(command, (error: any, stdout: any, stderr: any) => {
         if (error) {
           // console.debug(`error: ${error.message}`);
